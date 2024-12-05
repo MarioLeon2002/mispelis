@@ -1,3 +1,4 @@
+
 """
 Django settings for mymovies project.
 
@@ -23,16 +24,18 @@ env = environ.Env(
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
+print(ALLOWED_HOSTS)
 
 
 # Application definition
@@ -85,13 +88,14 @@ WSGI_APPLICATION = 'mymovies.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ubuntu_db",
-        "USER": "ubuntu",
-        "PASSWORD": "password",
+        "NAME": "django_database",
+        "USER": "django",
+        "PASSWORD": "masterkey",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -128,6 +132,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/home/ubuntu/ProgWeb/Tutoriales/css'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

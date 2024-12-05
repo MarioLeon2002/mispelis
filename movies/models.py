@@ -39,3 +39,12 @@ class MovieCredit(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
+
+class MovieReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1),
+                                                          MaxValueValidator(100)])
+    review = models.TextField(blank=True)
+    title  = models.TextField(blank=False, null=False, default="Reseña sin titulo")
+    
